@@ -1,0 +1,5 @@
+Credentials cache: API:DFEA91D2-C8DF-49CC-86A7-720D75A09E15
+        Principal: agelloz@42.FR
+
+  Issued                Expires               Principal
+Aug 27 14:39:49 2018  Sep  3 14:39:17 2018  krbtgt/42.FR@42.FR

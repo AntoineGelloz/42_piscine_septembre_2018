@@ -1,0 +1,1 @@
+if [ $FT_LINE1 -gt $FT_LINE2 ]; then prov=$FT_LINE1 FT_LINE1=$FT_LINE2 FT_LINE2=$prov; fi; cat /etc/passwd | grep -v '#' | awk 'NR%2==0' | sed 's/:\*:.*//' | rev | sort -r | sed -n "$FT_LINE1,$FT_LINE2 p" | sed 's/$/, /' | tr -d '\n' | sed 's/, $/./' | tr -d "\n"
