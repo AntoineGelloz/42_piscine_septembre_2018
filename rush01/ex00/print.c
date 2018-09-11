@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agelloz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: sipatry <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/05 16:08:23 by agelloz           #+#    #+#             */
-/*   Updated: 2018/09/10 10:37:22 by agelloz          ###   ########.fr       */
+/*   Created: 2018/09/09 11:12:25 by sipatry           #+#    #+#             */
+/*   Updated: 2018/09/09 17:21:44 by sipatry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
-{
-	unsigned int i;
+#include <unistd.h>
 
-	i = 0;
-	while (i < n && src[i] != '\0')
+void	print(char **tab)
+{
+	int x;
+	int y;
+
+	x = 1;
+	while (x <= 9)
 	{
-		dest[i] = src[i];
-		i++;
+		y = 0;
+		while (y <= 8)
+		{
+			write(1, &tab[x][y], 1);
+			if (y < 8)
+				write(1, " ", 1);
+			y++;
+		}
+		write(1, "\n", 1);
+		x++;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
 }

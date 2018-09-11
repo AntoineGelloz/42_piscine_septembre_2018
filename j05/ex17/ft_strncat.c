@@ -12,17 +12,21 @@
 
 char	*ft_strncat(char *dest, char *src, int nb)
 {
-	char *move_in_dest;
+	int i;
+	int j;
 
-	move_in_dest = dest;
-	while (*move_in_dest != '\0')
-		move_in_dest++;
-	while (*move_in_dest != '\0' && *src != '\0' && nb > 0)
+	i = 0;
+	j = 0;
+	while (dest[i] != '\0')
+		i++;
+	while (src[j] != '\0' && nb > 0)
 	{
-		*move_in_dest++ = *src++;
+		dest[i] = src[j];
+		i++;
+		j++;
 		nb--;
 	}
-	if (*move_in_dest != '\0')
-		*move_in_dest = '\0';
+	if (dest[i] != '\0')
+		dest[i] = '\0';
 	return (dest);
 }

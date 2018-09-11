@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agelloz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/05 16:08:23 by agelloz           #+#    #+#             */
-/*   Updated: 2018/09/10 10:37:22 by agelloz          ###   ########.fr       */
+/*   Created: 2018/09/05 14:56:03 by agelloz           #+#    #+#             */
+/*   Updated: 2018/09/05 14:56:09 by agelloz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
-{
-	unsigned int i;
+#include <string.h>
+#include <stdio.h>
 
-	i = 0;
-	while (i < n && src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
+char	*ft_strcpy(char *dest, char *src)
+{
+	while (*src != '\0')
+		*dest++ = *src++;
+	if (*dest != '\0')
+		*dest = '\0';
 	return (dest);
+}
+
+int main(int ac, char **av)
+{
+    (void)ac;
+    strcpy(av[1], av[2]);
+    printf("%s, %s\n", av[1], av[2]);
+    ft_strcpy(av[3], av[4]);
+    printf("%s, %s\n", av[3], av[4]);
+    return 0;
 }

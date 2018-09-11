@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agelloz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/05 16:08:23 by agelloz           #+#    #+#             */
-/*   Updated: 2018/09/10 10:37:22 by agelloz          ###   ########.fr       */
+/*   Created: 2018/09/11 17:58:03 by agelloz           #+#    #+#             */
+/*   Updated: 2018/09/11 22:46:59 by agelloz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+void	ft_putchar(char c);
+
+int		main(int argc, char **argv)
 {
-	unsigned int i;
+	int i;
 
 	i = 0;
-	while (i < n && src[i] != '\0')
+	(void)argc;
+	while (argv[0][i] != '\0')
 	{
-		dest[i] = src[i];
+		ft_putchar(argv[0][i]);
 		i++;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	ft_putchar('\n');
+	return (0);
 }

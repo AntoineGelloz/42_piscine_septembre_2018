@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agelloz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 16:08:23 by agelloz           #+#    #+#             */
-/*   Updated: 2018/09/10 10:37:22 by agelloz          ###   ########.fr       */
+/*   Updated: 2018/09/11 13:21:42 by agelloz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	unsigned int i;
+	char	*osrc;
+	int		bytes_left;
 
-	i = 0;
-	while (i < n && src[i] != '\0')
+	osrc = src;
+	bytes_left = size;
+	if (bytes_left != 0)
 	{
-		dest[i] = src[i];
-		i++;
+		while (--bytes_left != 0)
+		{
+			*dest = *src;
+			dest++;
+			if (*src++ == '\0')
+				break ;
+		}
 	}
-	while (i < n)
+	if (bytes_left == 0)
 	{
-		dest[i] = '\0';
-		i++;
+		if (size != 0)
+			*dest = '\0';
+		while (*src)
+			src++;
 	}
-	return (dest);
+	return (src - osrc);
 }

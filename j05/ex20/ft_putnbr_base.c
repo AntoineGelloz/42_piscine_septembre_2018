@@ -6,7 +6,7 @@
 /*   By: agelloz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/31 11:28:28 by agelloz           #+#    #+#             */
-/*   Updated: 2018/09/10 14:12:23 by agelloz          ###   ########.fr       */
+/*   Updated: 2018/09/11 11:23:48 by agelloz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_putnbr_base(int nbr, char *base)
 		while (base[j] != '\0')
 		{
 			if ((i != j && base[i] == base[j])
-			|| base[j] == '+' || base[j] == '-')
+					|| base[j] == '+' || base[j] == '-')
 			{
 				i = 0;
 				return ;
