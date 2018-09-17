@@ -10,7 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+#include <unistd.h>
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
 int		ft_strcmp(char *s1, char *s2)
 {

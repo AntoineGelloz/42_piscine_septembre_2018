@@ -13,7 +13,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-int	ft_atoi(char *str)
+int     ft_atoi(char *str)
 {
 	int pos;
 	int integer;
@@ -38,47 +38,42 @@ int	ft_atoi(char *str)
 	return (sign * integer);
 }
 
-char   *ft_convert_nbr(int nbr, int base_length, char *base, char *resultat)
+int     ft_check_str(char *str, char *base, int base_length)
 {
-    printf("res dep -%s-\n", resultat);
-    if (nbr < 0)
+    int i;
+    int j;
+    int ok;
+
+    i = 0;
+    ok = 0;
+    if (str[i] == '+' || str[i] == '-')
+        i++;
+    while (str[i] != '\0')
     {
-        *resultat = '-';
-        resultat++;
-        if (nbr <= -1 * base_length)
-            ft_convert_nbr(nbr / (-1 * base_length), base_length, base, resultat);
-        printf("zero -%c-\n", base[-(nbr % base_length)]);
-        *resultat = base[-(nbr % base_length)];
-        resultat++;
+        j = 0;
+        while (j < base_length)
+        {
+            if (str[i] == base[j])
+                ok++;
+            j++;
+        }
+        i++;
     }
-    else if (nbr >= base_length)
-    {
-        printf("sup -%c-\n", base[nbr % base_length]);
-        ft_convert_nbr(nbr / base_length, base_length, base, resultat);
-        *resultat = base[nbr % base_length];
-        resultat++;
-    }
+    printf("ok%d-i%d\n", ok, i);
+    if (ok == i - 1)
+        return (1);
     else
-    {
-        printf("inf -%c-\n", base[nbr]);
-        *resultat = base[nbr];
-        resultat++;
-    }
-    printf("res -%s-\n", resultat);
-    //resultat = "\0";
-    return (resultat);
+        return (0);
 }
 
 int    ft_atoi_base(char *str, char *base)
 {
     int base_length;
     int j;
-    int nbr;
-    char resultat[30];
+    int result;
 
-    resultat[0] = '\0';
-    nbr = ft_atoi(str);
     base_length = 0;
+    result = 0;
     while (base[base_length] != '\0')
     {
         j = 0;
@@ -93,14 +88,16 @@ int    ft_atoi_base(char *str, char *base)
         }
         base_length++;
     }
-    if (base_length > 1)
-        ft_convert_nbr(nbr, base_length, base, resultat);
-    return (ft_atoi(resultat));
+    if (base_length > 1 && ft_check_str(str, base, base_length) == 1)
+    {
+
+    }
+    return (result);
 }
 
-int main(void)
+int     main(void)
 {
-    char str[20] = "16";
+    char str[20] = "-16BC";
 	char base[20] = "0123456789ABCDEF";
-	printf("%d", ft_atoi_base(str, base));
+	printf("result %d\n", ft_atoi_base(str, base));
 }
